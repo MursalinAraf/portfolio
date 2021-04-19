@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.io/rbhatia46/React-Portfolio.svg)](https://about-mursalin.firebaseapp.com/)
+[![HitCount](https://about-mursalin.firebaseapp.com/)
 
 
 A simple SPA Portfolio template for developer/designers built with React. Use it to showcase your work, testimonials and other information to clients.
