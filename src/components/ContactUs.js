@@ -14,11 +14,32 @@ export default class ContactUs extends Component {
           <div className="row">
             <aside className="eigth columns footer-widgets">
               <div className="widget">
-                  <h4>Contact : 01758585137 , 01316575399</h4>
+                  <h4>Contact : +8801727919079</h4>
+                  <h4>Email : parvej100001@gmail.com</h4>
                   <br></br>
               </div>
             </aside>
           </div>
+                         <div className="row">
+
+                  <div className="columns contact-details">
+
+                  <h2>Contact Details</h2>
+                  <p className="address">
+       						<span>{resumeData.name}</span>
+                     <br></br>
+       						   <span>
+                     {resumeData.address}
+                    </span>
+                    <br></br>
+                    <span>
+                     {resumeData.phone}
+                    </span>
+                    <br></br>
+                    <span>parvej100001@gmail.com</span>
+       					   </p>
+                  </div>
+               </div>
         </section>
         );
   }

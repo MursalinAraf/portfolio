@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './mystyle.css'
 export default  class Resume extends Component {
   render() {
     let resumeData = this.props.resumeData;
@@ -33,7 +34,7 @@ export default  class Resume extends Component {
          </div>
         <div className="row work">
             <div className="three columns header-col">
-               <h1><span>Work</span></h1>
+               <h1><span>Work Experience</span></h1>
             </div>
 
             <div className="nine columns main-col">
@@ -44,8 +45,10 @@ export default  class Resume extends Component {
                        <div className="twelve columns">
                           <h3>{item.CompanyName}</h3>
                           <p className="info">
-                          {item.specialization}
-                          <span>&bull;</span> <em className="date">{item.MonthOfLeaving} {item.YearOfLeaving}</em></p>
+                          {
+                            item.specialization.map(spec => <div> <span>&bull;</span> <em className="date">{spec.designation} {spec.duration}</em></div>)
+                          }
+                          </p>  
                           <p>
                           {item.Achievements}
                           </p>
@@ -58,6 +61,26 @@ export default  class Resume extends Component {
               }
             </div> 
          </div>
+
+         <div className="row work">
+            <div className="three columns header-col">
+               <h1><span>Extra Curricullar</span></h1>
+            </div>
+
+            <div className="nine columns main-col">
+
+              {resumeData.responsibilities.map((res, index) => {
+                return <div className="response">
+                <h3>{index +1 }. {res.event}</h3>
+                <em className="date">{res.position}</em>
+                <br />
+                <em className="date">{res.games}</em>
+                <hr />
+                </div>
+              })}
+            </div>  
+
+            </div>
 
 
          <div className="row skill">
@@ -78,7 +101,7 @@ export default  class Resume extends Component {
                 {
                   resumeData.skills && resumeData.skills.map((item) => {
                     return(
-                      <li><h4>{item.skillname}</h4></li>
+                      <li><h4 style={{paddingTop: '4px', paddingLeft: '10px'}}>{item.skillname}</h4></li>
                     )
                   })
                 }
@@ -90,6 +113,22 @@ export default  class Resume extends Component {
    			</div>
 
          </div>
+         <div className="row main-col">
+         <div className="three columns header-col">
+               <h1 style={{marginLeft: '12px'}}><span>Training</span></h1>
+            </div>
+
+             <ul>
+                {
+                  resumeData.trainings && resumeData.trainings.map((item) => {
+                    return(
+                      <li className="training">{item.trainingName}</li>
+                    )
+                  })
+                }
+
+   					</ul>
+             </div>
 
       </section>
     );
