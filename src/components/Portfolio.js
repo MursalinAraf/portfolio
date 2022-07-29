@@ -1,5 +1,29 @@
 import React, { Component } from 'react';
+import Modal from './Modal';
 export default class Porfolio extends Component {
+
+  constructor(){
+    super()
+    this.state= {
+      show: false,
+      openId: 1
+    }
+  }
+  
+
+  showModal = e => {
+    this.setState({
+      show: !this.state.show,
+      openId: e
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      show: false
+    });
+  };
+
   render() {
     let resumeData = this.props.resumeData;
     return (
@@ -11,17 +35,15 @@ export default class Porfolio extends Component {
           {
             resumeData.portfolio && resumeData.portfolio.map((item)=>{
               return(
-                <div className="columns portfolio-item">
+                <div className="columns portfolio-item" role="presentation" onClick={() => this.showModal(item.id)}>
                   <div className="item-wrap">
-                    <a href="#modal-01">
-                      <img src={`${item.imgurl}`} className="item-img"/>
+                      <img src={`${item.imgurl[0]}`} alt="project" className="item-img"/>
                       <div className="overlay">
                         <div className="portfolio-item-meta">
                           <h5>{item.name}</h5>
                           <p>{item.description}</p>
                         </div>
                       </div>
-                    </a>
                   </div>
                 </div>
               )
@@ -30,6 +52,7 @@ export default class Porfolio extends Component {
           </div>
         </div>
       </div>
+      <Modal show={this.state.show} data={resumeData.portfolio.filter(port => port.id === this.state.openId)} onClose={this.onClose} />
   </section>
         );
   }
